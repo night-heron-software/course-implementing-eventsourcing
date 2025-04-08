@@ -4,4 +4,5 @@ export type RemoveItemCommand = Command<'RemoveItem',{
     
 	itemId:string    
     aggregateId:string
+    productId:string
 }>

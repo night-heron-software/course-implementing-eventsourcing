@@ -30,6 +30,7 @@ export const removeItemCommandHandler =
             data: {
                 aggregateId: command.data.aggregateId,
                 itemId: command.data.itemId,
+                productId: command.data.productId
             }
         }]
 

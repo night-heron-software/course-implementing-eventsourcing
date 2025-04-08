@@ -7,7 +7,7 @@ import {CartEvents} from "@/app/api/events/CartEvents";
 import {useRouter} from "next/navigation";
 import {removeItemCommandHandler} from "@/app/slices/removeitem/commandHandler";
 
-export default function RemoveItem(props: {aggregateId: string, itemId: string}) {
+export default function RemoveItem(props: {aggregateId: string, itemId: string, productId:string}) {
 
     return <div>
         <div className={"control"}>
@@ -19,7 +19,8 @@ export default function RemoveItem(props: {aggregateId: string, itemId: string})
                     type: 'RemoveItem',
                     data: {
                         itemId: props.itemId,
-                        aggregateId: props.aggregateId
+                        aggregateId: props.aggregateId,
+                        productId: props.productId
                     }
                 })
                 await findEventStore().appendToStream(Streams.Cart, resultEvents,

@@ -39,7 +39,8 @@ const prepareTestCollection = (): TestCollection<any, CartEvents> => {
                     type: 'ItemRemoved',
                     data: {
                         aggregateId: itemAdded.data.aggregateId,
-                        itemId: itemAdded.data.itemId
+                        itemId: itemAdded.data.itemId,
+                        productId: itemAdded.data.productId,
                     }
                 }],
                 test: async (testName: string, given: CartEvents[]) => {

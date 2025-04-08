@@ -65,6 +65,7 @@ const prepareTestCollection = (): TestCollection<AddItemCommand, CartEvents> => 
                     data: {
                         aggregateId: v4(),
                         itemId: "1",
+                        productId: "1"
                     }
                 }],
                 test: async (testName: string, given, when) => {

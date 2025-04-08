@@ -34,6 +34,7 @@ const prepareTestCollection = (): TestCollection<RemoveItemCommand, CartEvents> 
                     data: {
                         aggregateId: "1",
                         itemId: "1",
+                        productId: "1"
                     }
                 },
                 test: async (testName: string, given, when) => {
@@ -63,6 +64,7 @@ const prepareTestCollection = (): TestCollection<RemoveItemCommand, CartEvents> 
                     data: {
                         aggregateId: "1",
                         itemId: "1",
+                        productId: "1"
                     }
                 },
                 test: async (testName: string, given, when) => {
