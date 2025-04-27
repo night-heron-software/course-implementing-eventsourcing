@@ -48,7 +48,8 @@ export default function CartItems(props: { aggregateId: string }) {
                                     <td>{item.name}</td>
                                     <td>${item.price.toFixed(2)}</td>
                                     <td><Inventories productId={item.productId}/></td>
-                                    <td><RemoveItem productId={item.productId} aggregateId={CART_SESSION} itemId={item.itemId}/></td>
+                                    <td><RemoveItem productId={item.productId} aggregateId={CART_SESSION}
+                                                    itemId={item.itemId}/></td>
                                 </tr>
                             ))}
                             </tbody>

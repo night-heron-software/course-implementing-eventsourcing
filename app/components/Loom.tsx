@@ -5,9 +5,11 @@ export default function LoomVideo(props: { video: string, title: string, desc?: 
             <h3>{props.title}</h3>
             <div className={"top-margin"}>{props.desc}</div>
             <div className={"top-margin"}>
-                <div style={{"position": "relative", "height": "0",
+                <div style={{
+                    "position": "relative", "height": "0",
                     // @ts-expect-error ts(2322)
-                    "padding-bottom": "64.67065868263472%"}}>
+                    "padding-bottom": "64.67065868263472%"
+                }}>
                     <iframe
                         src={url}
                         // @ts-expect-error ts(2322)

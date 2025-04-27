@@ -15,10 +15,10 @@ const prepareTestCollection = (): TestCollection<AddItemCommand, InventoryUpdate
                 given: [{
                     type: 'InventoryUpdated',
                     data: {
-                       productId: v4(),
+                        productId: v4(),
                         inventory: 5
                     }
-                },{
+                }, {
                     type: 'InventoryUpdated',
                     data: {
                         productId: "product-id",
@@ -26,7 +26,7 @@ const prepareTestCollection = (): TestCollection<AddItemCommand, InventoryUpdate
                     }
                 }],
                 test: async (testName: string, given, when) => {
-                    const result = await inventoriesStateView(0,given,{productId: "product-id"})
+                    const result = await inventoriesStateView(0, given, {productId: "product-id"})
                     return {
                         test_name: testName,
                         passed: result == 6,

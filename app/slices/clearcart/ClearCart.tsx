@@ -3,7 +3,7 @@ import {Streams} from "@/app/api/Streams";
 import {CartEvents} from "@/app/api/events/CartEvents";
 import {clearCartCommandHandler} from "@/app/slices/clearcart/commandHandler";
 
-export default function ClearCart(props:{aggregateId: string}) {
+export default function ClearCart(props: { aggregateId: string }) {
 
     return <div>
         <div className={"control"}>

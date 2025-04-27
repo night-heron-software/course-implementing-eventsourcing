@@ -15,17 +15,18 @@ export default function SpecPage() {
     return (<>
         <Navigation/>
         <section className="section main-container">
-        <div className="">
-            <div className="columns">
-               <AddItemTests/>
-               <CartItemsTests/>
-               <RemoveItemTests/>
-                <InventoriesTest/>
-                <CartsWithProductsTest/>
-                <SubmitCartTests/>
+            <div className="">
+                <div className="columns">
+                    <AddItemTests/>
+                    <CartItemsTests/>
+                    <RemoveItemTests/>
+                    <InventoriesTest/>
+                    <CartsWithProductsTest/>
+                    <SubmitCartTests/>
+                </div>
             </div>
-        </div>
-        <DebugEvents/>
+            <DebugEvents/>
 
-    </section></>)
+        </section>
+    </>)
 }

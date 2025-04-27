@@ -28,7 +28,7 @@ const prepareTestCollection = (): TestCollection<undefined, CartEvents> => {
                     const result = cartsWithProductsStateView([], given)
                     return {
                         test_name: testName,
-                        passed: result.length === 1 && result[0].cartItems[0]?.productId==itemAdded.data.productId,
+                        passed: result.length === 1 && result[0].cartItems[0]?.productId == itemAdded.data.productId,
                         message: "Cart should contain one product"
                     }
                 }

@@ -3,7 +3,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter'
 
-export default function MarkdownViewer(props:{markdown:string}){
+export default function MarkdownViewer(props: { markdown: string }) {
 
     return <ReactMarkdown
         remarkPlugins={[remarkGfm]}

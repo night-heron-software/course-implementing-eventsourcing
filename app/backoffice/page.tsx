@@ -13,19 +13,19 @@ import {PriceChangedEvent} from "@/app/api/events/PriceChanged";
 export default function PrototypePage() {
 
     useEffect(() => {
-        const subscription = subscribeStream<PriceChangedEvent>(Streams.Price, (_:bigint, events:PriceChangedEvent[])=>{
+        const subscription = subscribeStream<PriceChangedEvent>(Streams.Price, (_: bigint, events: PriceChangedEvent[]) => {
             console.log("Price Change processor")
             priceChangeProcessor(events.filter(it => it.type == 'PriceChanged'))
         })
-        return ()=>unsubscribeStream(Streams.Price, subscription)
+        return () => unsubscribeStream(Streams.Price, subscription)
     }, []);
 
     useEffect(() => {
-        const subscription = subscribeStream<CartEvents>(Streams.Cart, (_:bigint, events:CartEvents[])=>{
+        const subscription = subscribeStream<CartEvents>(Streams.Cart, (_: bigint, events: CartEvents[]) => {
             console.log("Archive Item processor")
             archiveItemTodoListProcessor(events);
         })
-        return ()=>unsubscribeStream(Streams.Cart, subscription)
+        return () => unsubscribeStream(Streams.Cart, subscription)
 
     }, []);
     return (<>
@@ -33,7 +33,7 @@ export default function PrototypePage() {
         <section className="section main-container">
             <div className="columns">
                 <div className="column is-half">
-                    <ProductManagementForm />
+                    <ProductManagementForm/>
                 </div>
 
             </div>

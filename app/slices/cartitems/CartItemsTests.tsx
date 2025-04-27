@@ -36,14 +36,14 @@ const prepareTestCollection = (): TestCollection<AddItemCommand, CartEvents> => 
                     }
                 }],
                 test: async (testName: string, given, when) => {
-                    const result = cartItemsStateView([],given)
+                    const result = cartItemsStateView([], given)
                     return {
                         test_name: testName,
                         passed: result.length == 2,
                         message: "Added 2 Cart Items"
                     }
                 }
-            },{
+            }, {
                 test_name: "added an item and removed it again",
                 given: [{
                     type: 'ItemAdded',
@@ -65,7 +65,7 @@ const prepareTestCollection = (): TestCollection<AddItemCommand, CartEvents> => 
                     }
                 }],
                 test: async (testName: string, given, when) => {
-                    const result = await cartItemsStateView([],given)
+                    const result = await cartItemsStateView([], given)
                     return {
                         test_name: testName,
                         passed: result.length == 0,

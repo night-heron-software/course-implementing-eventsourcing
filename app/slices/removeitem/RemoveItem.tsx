@@ -3,7 +3,7 @@ import {Streams} from "@/app/api/Streams";
 import {CartEvents} from "@/app/api/events/CartEvents";
 import {removeItemCommandHandler} from "@/app/slices/removeitem/commandHandler";
 
-export default function RemoveItem(props: {aggregateId: string, itemId: string, productId:string}) {
+export default function RemoveItem(props: { aggregateId: string, itemId: string, productId: string }) {
 
     return <div>
         <div className={"control"}>

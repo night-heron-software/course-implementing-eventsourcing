@@ -5,7 +5,7 @@ import {submitCartCommandHandler} from "@/app/slices/submitcart/commandHandler";
 import {InventoryUpdatedEvent} from "@/app/api/events/InventoryChanged";
 import {cartSubmissionInventoryStateView} from "@/app/slices/submitcart/InventoriesStateView";
 
-export default function SubmitCart(props:{aggregateId: string, productIds: string[]}) {
+export default function SubmitCart(props: { aggregateId: string, productIds: string[] }) {
 
     return <div>
         <div className={"control"}>
@@ -34,7 +34,7 @@ export default function SubmitCart(props:{aggregateId: string, productIds: strin
             }
 
             } className={"button is-info m-2"}><i className="fas fa-shopping-cart"></i>
-        </button>
+            </button>
+        </div>
     </div>
-</div>
 }

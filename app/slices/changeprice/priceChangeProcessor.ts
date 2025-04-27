@@ -7,7 +7,7 @@ import {Streams} from "@/app/api/Streams";
 
 const requestToArchiveItemCommandHandler = (events: Event[], command: RequestToArchiveItem): CartEvents[] => {
     return [{
-        type:'ItemArchiveRequested',
+        type: 'ItemArchiveRequested',
         data: {
             aggregateId: command.data.aggregateId,
             productId: command.data.productId,
@@ -19,10 +19,10 @@ const requestToArchiveItemCommandHandler = (events: Event[], command: RequestToA
 
 export const priceChangeProcessor = async (events: PriceChangedEvent[]) => {
 
-   const cartStream = await findEventStore().readStream<CartEvents>(Streams.Cart)
-    const cartsWithProducts = cartsWithProductsStateView([], cartStream?.events||[])
+    const cartStream = await findEventStore().readStream<CartEvents>(Streams.Cart)
+    const cartsWithProducts = cartsWithProductsStateView([], cartStream?.events || [])
 
-    events.forEach((event)=> {
+    events.forEach((event) => {
         if (event.type == "PriceChanged") {
             const resultEvents = cartsWithProducts.flatMap(cart => {
                 const cartItem = cart.cartItems.find(it => it.productId == event.data.productId)
@@ -40,7 +40,7 @@ export const priceChangeProcessor = async (events: PriceChangedEvent[]) => {
                 return []
             })
             if (resultEvents?.length > 0) {
-            findEventStore().appendToStream(Streams.Cart, resultEvents);
+                findEventStore().appendToStream(Streams.Cart, resultEvents);
             }
         }
     })

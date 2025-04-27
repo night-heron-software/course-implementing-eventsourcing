@@ -4,15 +4,15 @@ import {AddItemCommand} from "@/app/api/commands/AddItemCommand";
 export const addItemCommandHandler = async (events: CartEvents[], command: AddItemCommand): Promise<CartEvents[]> => {
 
     const itemsInCart = events.reduce((acc: string[], event: CartEvents) => {
-       if (event.type === 'ItemAdded') {
+        if (event.type === 'ItemAdded') {
             acc.push(event.data.itemId);
         } else if (event.type === 'ItemRemoved') {
             acc = acc.filter(itemId => itemId !== event.data.itemId);
-        } else if(event.type === 'ItemArchived'){
+        } else if (event.type === 'ItemArchived') {
             acc = acc.filter(itemId => itemId !== event.data.itemId);
         } else if (event.type == "CartCleared") {
-           acc = []
-       }
+            acc = []
+        }
         return acc; // Return the updated accumulator
     }, []);
 

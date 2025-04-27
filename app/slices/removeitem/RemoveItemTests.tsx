@@ -40,7 +40,7 @@ const prepareTestCollection = (): TestCollection<RemoveItemCommand, CartEvents> 
                         message: "Remove item successfully applied"
                     }
                 }
-            },{
+            }, {
                 test_name: "cannot remove an item",
                 given: [{
                     type: 'ItemAdded',
@@ -84,6 +84,6 @@ const prepareTestCollection = (): TestCollection<RemoveItemCommand, CartEvents> 
     }
 }
 
-export default function RemoveItemTests(){
+export default function RemoveItemTests() {
     return <TestResultViewer slice={"Remove Item"} results={runTests(prepareTestCollection)}/>
 }

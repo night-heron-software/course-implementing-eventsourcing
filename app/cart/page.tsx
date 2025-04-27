@@ -15,13 +15,14 @@ export default function CartPage() {
     return (<>
         <Navigation/>
         <section className="section main-container">
-        <div className="">
-            <div className="columns">
-                <div className={"container"}>
-                   <CartItems aggregateId={CART_SESSION}/>
+            <div className="">
+                <div className="columns">
+                    <div className={"container"}>
+                        <CartItems aggregateId={CART_SESSION}/>
+                    </div>
                 </div>
             </div>
-        </div>
-        <DebugEvents/>
-    </section></>)
+            <DebugEvents/>
+        </section>
+    </>)
 }

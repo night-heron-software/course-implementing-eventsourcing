@@ -11,7 +11,7 @@ export default function Inventories(props: { productId: string }) {
     useEffect(() => {
         const subscription = subscribeStream(Streams.Inventory, (nextExpectedStreamVersion, events: InventoryUpdatedEvent[],) => {
             setInventory((prevState) => {
-                return inventoriesStateView(prevState, events, {productId:props.productId})
+                return inventoriesStateView(prevState, events, {productId: props.productId})
             })
         })
         return () => {

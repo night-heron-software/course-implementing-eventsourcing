@@ -1,7 +1,7 @@
 import {TestResult} from "@/app/components/tests/TestRunner";
 import {useEffect, useState} from "react";
 
-export const TestResultViewer = (props: {slice: string, results: Promise<TestResult[]>})=>{
+export const TestResultViewer = (props: { slice: string, results: Promise<TestResult[]> }) => {
 
     const [testResults, setTestResults] = useState<TestResult[]>([])
 

@@ -69,7 +69,7 @@ const prepareTestCollection = (): TestCollection<AddItemCommand, CartEvents> => 
                             productId: "1"
 
                         }
-                    },{
+                    }, {
                         type: 'ItemAdded',
                         data: {
                             aggregateId: v4(),
@@ -92,18 +92,26 @@ const prepareTestCollection = (): TestCollection<AddItemCommand, CartEvents> => 
                         productId: "1"
                     }
                 },
-                test: async (testName:string, given, when) => {
+                test: async (testName: string, given, when) => {
                     try {
                         await addItemCommandHandler(given, when!)
-                        return {test_name: testName, passed: false, message: "should not be able to add more than 3 items"}
+                        return {
+                            test_name: testName,
+                            passed: false,
+                            message: "should not be able to add more than 3 items"
+                        }
                     } catch (e) {
-                        return {test_name: testName, passed: true, message: "expected validation error if more than 3 items added"}
+                        return {
+                            test_name: testName,
+                            passed: true,
+                            message: "expected validation error if more than 3 items added"
+                        }
                     }
                 }
             }]
     }
 }
 
-export default function AddItemTests(){
+export default function AddItemTests() {
     return <TestResultViewer slice={"Add Item"} results={runTests(prepareTestCollection)}/>
 }

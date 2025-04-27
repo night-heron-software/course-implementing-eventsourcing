@@ -76,7 +76,7 @@ const prepareTestCollection = (): TestCollection<SubmitCartCommand, CartEvents> 
                             passed: result.length == 1 && result[0].type == "CartSubmitted",
                             message: "Cart successfully submitted"
                         };
-                    } catch (e){
+                    } catch (e) {
                         return {
                             test_name: testName,
                             passed: true,
