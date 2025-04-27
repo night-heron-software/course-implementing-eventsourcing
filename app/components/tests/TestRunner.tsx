@@ -1,4 +1,3 @@
-import {Command, Event} from '@event-driven-io/emmett'
 import {CartEvents} from "@/app/api/events/CartEvents";
 import {AddItemCommand} from "@/app/api/commands/AddItemCommand";
 
@@ -22,8 +21,8 @@ export const assert = (condition, message) => {
 }
 
 export const runTests = async (prepareTestCollection:()=>TestCollection<any, any>): Promise<TestResult[]> => {
-    let results: TestResult[] = []
-    let tests: TestCollection<AddItemCommand,CartEvents> = prepareTestCollection()
+    const results: TestResult[] = []
+    const tests: TestCollection<AddItemCommand,CartEvents> = prepareTestCollection()
     tests.tests.forEach(test_case => {
         try {
              test_case.test(test_case.test_name, test_case.given, test_case.when).then((result)=>{

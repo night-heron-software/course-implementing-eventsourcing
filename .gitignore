@@ -38,3 +38,4 @@ app/prototype
 public/prototype.css
 build.sh
 config.json
+.idea

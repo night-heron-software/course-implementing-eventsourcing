@@ -3,11 +3,11 @@ import {CartEvents} from "@/app/api/events/CartEvents";
 import {ItemAddedEvent} from "@/app/api/events/ItemAddedEvent";
 import {v4} from "uuid";
 import {TestResultViewer} from "@/app/components/TestResultViewer";
-import {cartsWithProductsStateView, CartWithProducts} from "@/app/slices/changeprice/cartsWithProductsStateView";
+import {cartsWithProductsStateView} from "@/app/slices/changeprice/cartsWithProductsStateView";
 
 
-const prepareTestCollection = (): TestCollection<any, CartEvents> => {
-    let itemAdded: ItemAddedEvent = {
+const prepareTestCollection = (): TestCollection<undefined, CartEvents> => {
+    const itemAdded: ItemAddedEvent = {
         type: 'ItemAdded',
         data: {
             productId: "product-1",
@@ -25,7 +25,7 @@ const prepareTestCollection = (): TestCollection<any, CartEvents> => {
                 test_name: "adds an Item",
                 given: [itemAdded],
                 test: async (testName: string, given: CartEvents[]) => {
-                    let result = cartsWithProductsStateView([], given)
+                    const result = cartsWithProductsStateView([], given)
                     return {
                         test_name: testName,
                         passed: result.length === 1 && result[0].cartItems[0]?.productId==itemAdded.data.productId,
@@ -44,7 +44,7 @@ const prepareTestCollection = (): TestCollection<any, CartEvents> => {
                     }
                 }],
                 test: async (testName: string, given: CartEvents[]) => {
-                    let result = cartsWithProductsStateView([], given)
+                    const result = cartsWithProductsStateView([], given)
                     return {
                         test_name: testName,
                         passed: result.length === 1 && result[0].cartItems.length === 0,
@@ -61,7 +61,7 @@ const prepareTestCollection = (): TestCollection<any, CartEvents> => {
                     }
                 }],
                 test: async (testName: string, given: CartEvents[]) => {
-                    let result = cartsWithProductsStateView([], given)
+                    const result = cartsWithProductsStateView([], given)
                     return {
                         test_name: testName,
                         passed: result.length === 1 && result[0].cartItems.length === 0,
@@ -80,7 +80,7 @@ const prepareTestCollection = (): TestCollection<any, CartEvents> => {
                     }
                 }],
                 test: async (testName: string, given: CartEvents[]) => {
-                    let result = cartsWithProductsStateView([], given)
+                    const result = cartsWithProductsStateView([], given)
                     return {
                         test_name: testName,
                         passed: result.length === 1 && result[0].cartItems.length === 0,

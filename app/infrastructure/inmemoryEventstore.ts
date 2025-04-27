@@ -1,16 +1,15 @@
-import type { Event, EventEnvelope } from '@event-driven-io/emmett'
-import {v4} from "uuid"
+import type {Event, EventEnvelope} from '@event-driven-io/emmett'
 import {
-  type AggregateStreamOptions,
-  type AggregateStreamResult,
-  type AppendToStreamOptions,
-  type AppendToStreamResult,
-  type EventStore,
-  type ReadStreamOptions,
-  type ReadStreamResult,
+    type AggregateStreamOptions,
+    type AggregateStreamResult,
+    type AppendToStreamOptions,
+    type AppendToStreamResult,
+    assertExpectedVersionMatchesCurrent,
+    type EventStore,
+    type ReadStreamOptions,
+    type ReadStreamResult,
 } from '@event-driven-io/emmett';
-import { assertExpectedVersionMatchesCurrent } from '@event-driven-io/emmett';
-import {CartEvents} from "@/app/api/events/CartEvents";
+import {v4} from "uuid"
 
 const streams = new Map<string, EventEnvelope[]>();
 
@@ -20,7 +19,7 @@ export const debugAllStreams = ():Map<string, EventEnvelope[]> => {
 
 export type Subscription<T extends Event> = (nextExpectedStreamVersion: bigint, events:T[])=>void
 
-const subscriptions = new Map<String, Subscription<any>[]>
+const subscriptions = new Map<string, Subscription<any>[]>
 
 export const subscribeStream = <T extends Event>(stream:string, subscription:Subscription<T>): Subscription<T> => {
   subscriptions.set(stream, [...subscriptions.get(stream)??[], subscription])

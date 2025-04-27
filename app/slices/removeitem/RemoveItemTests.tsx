@@ -1,12 +1,7 @@
-import {assert, runTests, TestCase, TestCollection, TestResult} from "@/app/components/tests/TestRunner";
-import {AddItemCommand} from "@/app/api/commands/AddItemCommand";
-import {Event} from "@event-driven-io/emmett"
-import {addItemCommandHandler} from "@/app/slices/additem/commandHandler";
+import {runTests, TestCollection} from "@/app/components/tests/TestRunner";
 import {CartEvents} from "@/app/api/events/CartEvents";
-import {ItemAddedEvent} from "@/app/api/events/ItemAddedEvent";
 import {v4} from "uuid";
 import {TestResultViewer} from "@/app/components/TestResultViewer";
-import {useEffect} from "react";
 import {RemoveItemCommand} from "@/app/api/commands/RemoveItemCommand";
 import {removeItemCommandHandler} from "@/app/slices/removeitem/commandHandler";
 
@@ -38,7 +33,7 @@ const prepareTestCollection = (): TestCollection<RemoveItemCommand, CartEvents> 
                     }
                 },
                 test: async (testName: string, given, when) => {
-                    let result = await removeItemCommandHandler(given, when!!)
+                    const result = await removeItemCommandHandler(given, when!)
                     return {
                         test_name: testName,
                         passed: result.length === 1 && result[0].type === "ItemRemoved" && result[0].data.itemId === "1",
@@ -69,7 +64,7 @@ const prepareTestCollection = (): TestCollection<RemoveItemCommand, CartEvents> 
                 },
                 test: async (testName: string, given, when) => {
                     try {
-                        let result = await removeItemCommandHandler(given, when!!);
+                        const result = await removeItemCommandHandler(given, when!);
                         return {
                             test_name: testName,
                             passed: false,

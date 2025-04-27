@@ -1,6 +1,4 @@
 import {runTests, TestCollection} from "@/app/components/tests/TestRunner";
-import {AddItemCommand} from "@/app/api/commands/AddItemCommand";
-import {addItemCommandHandler} from "@/app/slices/additem/commandHandler";
 import {CartEvents} from "@/app/api/events/CartEvents";
 import {v4} from "uuid";
 import {TestResultViewer} from "@/app/components/TestResultViewer";
@@ -38,7 +36,7 @@ const prepareTestCollection = (): TestCollection<SubmitCartCommand, CartEvents> 
                     }
                 },
                 test: async (testName: string, given, when) => {
-                    let result: CartEvents[] = submitCartCommandHandler(given, when!!)
+                    const result: CartEvents[] = submitCartCommandHandler(given, when!)
                     return {
                         test_name: testName,
                         passed: result.length == 1 && result[0].type == "CartSubmitted",
@@ -72,7 +70,7 @@ const prepareTestCollection = (): TestCollection<SubmitCartCommand, CartEvents> 
                 },
                 test: async (testName: string, given, when) => {
                     try {
-                        let result: CartEvents[] = submitCartCommandHandler(given, when!!);
+                        const result: CartEvents[] = submitCartCommandHandler(given, when!);
                         return {
                             test_name: testName,
                             passed: result.length == 1 && result[0].type == "CartSubmitted",

@@ -1,4 +1,3 @@
-import {InventoryUpdatedEvent} from "@/app/api/events/InventoryChanged";
 import {CartEvents} from "@/app/api/events/CartEvents";
 
 export type CartItem = {

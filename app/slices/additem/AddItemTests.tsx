@@ -36,7 +36,7 @@ const prepareTestCollection = (): TestCollection<AddItemCommand, CartEvents> => 
                     }
                 },
                 test: async (testName: string, given, when) => {
-                    let result = await addItemCommandHandler(given, when!!)
+                    const result = await addItemCommandHandler(given, when!)
                     return {
                         test_name: testName,
                         passed: result.length == 1,
@@ -94,7 +94,7 @@ const prepareTestCollection = (): TestCollection<AddItemCommand, CartEvents> => 
                 },
                 test: async (testName:string, given, when) => {
                     try {
-                        await addItemCommandHandler(given, when!!)
+                        await addItemCommandHandler(given, when!)
                         return {test_name: testName, passed: false, message: "should not be able to add more than 3 items"}
                     } catch (e) {
                         return {test_name: testName, passed: true, message: "expected validation error if more than 3 items added"}

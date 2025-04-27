@@ -1,12 +1,9 @@
 'use client'
 
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {DebugEvents} from "@/app/debug/eventsdebug";
-import {findEventStore, subscribeStream} from "@/app/infrastructure/inmemoryEventstore";
-import {Streams} from "@/app/api/Streams";
 import {v4} from "uuid";
 import Navigation from "@/app/components/Navigation";
-import {CartEvents} from "@/app/api/events/CartEvents";
 import AddItem from "@/app/slices/additem/AddItem";
 
 export default function ProductsPage() {

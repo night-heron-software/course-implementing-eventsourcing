@@ -1,15 +1,12 @@
 import {CartEvents} from "@/app/api/events/CartEvents";
-import {AddItemCommand} from "@/app/api/commands/AddItemCommand";
-import {ItemAddedEvent} from "@/app/api/events/ItemAddedEvent";
-import {findEventStore} from "@/app/infrastructure/inmemoryEventstore";
 import {RemoveItemCommand} from "@/app/api/commands/RemoveItemCommand";
 
 export const removeItemCommandHandler =
     async (events: CartEvents[], command: RemoveItemCommand): Promise<CartEvents[]> => {
 
-        var itemsInCart: string[] = []
+        let itemsInCart: string[] = []
 
-        for (let event of events) {
+        for (const event of events) {
             if (event.type === 'ItemAdded') {
                 itemsInCart.push(event.data.itemId);
             } else if (event.type === 'ItemRemoved') {

@@ -19,13 +19,13 @@ const requestToArchiveItemCommandHandler = (events: Event[], command: RequestToA
 
 export const priceChangeProcessor = async (events: PriceChangedEvent[]) => {
 
-   let cartStream = await findEventStore().readStream<CartEvents>(Streams.Cart)
-    let cartsWithProducts = cartsWithProductsStateView([], cartStream?.events||[])
+   const cartStream = await findEventStore().readStream<CartEvents>(Streams.Cart)
+    const cartsWithProducts = cartsWithProductsStateView([], cartStream?.events||[])
 
     events.forEach((event)=> {
         if (event.type == "PriceChanged") {
-            let resultEvents = cartsWithProducts.flatMap(cart => {
-                let cartItem = cart.cartItems.find(it => it.productId == event.data.productId)
+            const resultEvents = cartsWithProducts.flatMap(cart => {
+                const cartItem = cart.cartItems.find(it => it.productId == event.data.productId)
                 if (cartItem) {
                     return requestToArchiveItemCommandHandler([], {
                         type: 'RequestToArchiveItem',

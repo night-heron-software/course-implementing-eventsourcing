@@ -2,7 +2,7 @@
 import {useRouter} from "next/navigation";
 
 export default function Navigation() {
-    let router = useRouter()
+    const router = useRouter()
     return (
         <nav className="navbar" role="navigation" aria-label="main navigation">
             <div className="navbar-brand">

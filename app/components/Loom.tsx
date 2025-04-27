@@ -1,16 +1,16 @@
 export default function LoomVideo(props: { video: string, title: string, desc?: string }) {
-    var url = `https://www.loom.com/embed/${props.video}?sid=2a6823b3-597d-4bec-9ad1-7a4f39a90964`
+    const url = `https://www.loom.com/embed/${props.video}?sid=2a6823b3-597d-4bec-9ad1-7a4f39a90964`
     return (
         <div className="has-text-centered top-margin">
             <h3>{props.title}</h3>
             <div className={"top-margin"}>{props.desc}</div>
             <div className={"top-margin"}>
                 <div style={{"position": "relative", "height": "0",
-                    // @ts-ignore
+                    // @ts-expect-error ts(2322)
                     "padding-bottom": "64.67065868263472%"}}>
                     <iframe
                         src={url}
-                        //@ts-ignore
+                        // @ts-expect-error ts(2322)
                         frameBorder="0" webkitallowfullscreen mozallowfullscreen allowFullScreen style={{
                         "position": "absolute",
                         "top": 0,

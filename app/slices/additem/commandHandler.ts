@@ -1,11 +1,9 @@
 import {CartEvents} from "@/app/api/events/CartEvents";
 import {AddItemCommand} from "@/app/api/commands/AddItemCommand";
-import {ItemAddedEvent} from "@/app/api/events/ItemAddedEvent";
-import {findEventStore} from "@/app/infrastructure/inmemoryEventstore";
 
 export const addItemCommandHandler = async (events: CartEvents[], command: AddItemCommand): Promise<CartEvents[]> => {
 
-    var itemsInCart = events.reduce((acc: string[], event: CartEvents) => {
+    const itemsInCart = events.reduce((acc: string[], event: CartEvents) => {
        if (event.type === 'ItemAdded') {
             acc.push(event.data.itemId);
         } else if (event.type === 'ItemRemoved') {

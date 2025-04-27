@@ -46,7 +46,7 @@ export default function ProductManagementForm() {
                             findEventStore().appendToStream<PriceChangedEvent>(Streams.Price, [{
                                 type: "PriceChanged",
                                 data: {
-                                    productId: productId!!,
+                                    productId: productId,
                                     price: price
                                 }
 
@@ -71,12 +71,12 @@ export default function ProductManagementForm() {
 
             <div className="field">
                 <div className="control">
-                    <button className="button is-primary" onClick={(evt) => {
+                    <button className="button is-primary" onClick={async (_) => {
                         if (productId) {
-                            findEventStore().appendToStream<InventoryUpdatedEvent>(Streams.Inventory, [{
+                            await findEventStore().appendToStream<InventoryUpdatedEvent>(Streams.Inventory, [{
                                 type: "InventoryUpdated",
                                 data: {
-                                    productId: productId!!,
+                                    productId: productId,
                                     inventory: inventory
                                 }
                             }])

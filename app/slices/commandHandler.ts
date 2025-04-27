@@ -1,5 +1,5 @@
-import { AddItemCommand } from "../api/commands/AddItemCommand"
-import { CartEvents } from "../api/events/CartEvents"
+import {AddItemCommand} from "../api/commands/AddItemCommand"
+import {CartEvents} from "../api/events/CartEvents"
 
 export const addItemCommandHandler =
     async (events: CartEvents[], command: AddItemCommand): Promise<CartEvents[]> => {

@@ -1,8 +1,8 @@
 "use client"
-import {useState, useEffect} from "react";
+import {useEffect, useState} from "react";
 import Draggable from "react-draggable";
-import {debugAllStreams, findEventStore} from "../infrastructure/inmemoryEventstore";
-import {Event, EventEnvelope} from "@event-driven-io/emmett";
+import {debugAllStreams} from "../infrastructure/inmemoryEventstore";
+import {EventEnvelope} from "@event-driven-io/emmett";
 import {v4} from "uuid"
 
 function CopyToClipboard(id: string) {
@@ -19,7 +19,7 @@ function CopyToClipboard(id: string) {
 export function DebugEvents(props: any) {
 
     //Map<string, EventEnvelope[]>
-    var [showEvents, setShowEvents] = useState(true)
+    const [showEvents, setShowEvents] = useState(true)
     const [events, setEvents] = useState<{ [k: string]: EventEnvelope[] }>({})
     const [stream, setStream] = useState<string | undefined>("")
     const [currentUUID, setCurrentUUID] = useState<string>()

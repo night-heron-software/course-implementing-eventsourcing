@@ -1,4 +1,4 @@
-import {findEventStore, subscribeStream, unsubscribeStream} from "@/app/infrastructure/inmemoryEventstore";
+import {subscribeStream, unsubscribeStream} from "@/app/infrastructure/inmemoryEventstore";
 import {useEffect, useState} from "react";
 import {Streams} from "@/app/api/Streams";
 import {CartItem, cartItemsStateView} from "@/app/slices/cartitems/CartItemsStateView";
@@ -14,7 +14,7 @@ export default function CartItems(props: { aggregateId: string }) {
 
 
     useEffect(() => {
-        let subscription = subscribeStream(Streams.Cart, (nextExpectedStreamVersion, events: CartEvents[],) => {
+        const subscription = subscribeStream(Streams.Cart, (nextExpectedStreamVersion, events: CartEvents[],) => {
             setCartItems((prevState) => {
                 return cartItemsStateView(prevState, events)
             })
