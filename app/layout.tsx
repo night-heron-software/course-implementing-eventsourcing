@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import localFont from "next/font/local";
+import React from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -42,6 +43,17 @@ export default function RootLayout({
     </head>
     <body className={`${geistSans.variable} ${geistMono.variable}`}>
     {children}
+    <footer className="footer has-background-light">
+      <div className="container">
+
+
+        {/* Bottom copyright */}
+        <div className="content has-text-centered">
+          <p>This is the sample application of the Online Course <a href={"https://www.eventsourcingcourse.com"}>Implementing Eventsourcing</a></p>
+          <p>&copy; {new Date().getFullYear()} <strong><a href={"https://www.nebulit.de"}>Nebulit GmbH</a></strong>. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
     </body>
     </html>
   );
