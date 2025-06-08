@@ -39,3 +39,4 @@ public/prototype.css
 build.sh
 config.json
 .idea
+node_modules
