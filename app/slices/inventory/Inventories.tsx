@@ -1,26 +1,22 @@
-import {findEventStore, subscribeStream, unsubscribeStream} from "@/app/infrastructure/inmemoryEventstore";
-import {useEffect, useState} from "react";
-import {Streams} from "@/app/api/Streams";
-import {CartItem, cartItemsStateView} from "@/app/slices/cartitems/CartItemsStateView";
-import {CartEvents} from "@/app/api/events/CartEvents";
-import RemoveItem from "@/app/slices/removeitem/RemoveItem";
-import ClearCart from "@/app/slices/clearcart/ClearCart";
-import {CART_SESSION} from "@/app/cart/CartSession";
-import {InventoryUpdatedEvent} from "@/app/api/events/InventoryChanged";
-import {inventoriesStateView} from "@/app/slices/inventory/InventoriesStateView";
+import { InventoryUpdatedEvent } from '@/app/api/events/InventoryChanged';
+import { Streams } from '@/app/api/Streams';
+import { subscribeStream, unsubscribeStream } from '@/app/infrastructure/inmemoryEventstore';
+import { inventoriesStateView } from '@/app/slices/inventory/InventoriesStateView';
+import { useEffect, useState } from 'react';
 
 export default function Inventories(props: { productId: string }) {
-    const [inventory, setInventory] = useState<number>(0)
-
+    const [inventory, setInventory] = useState<number>(0);
 
     useEffect(() => {
-       // TODO subscribe to the Inventory Stream
-        // TODO update the inventory for the given productId in "props.productId"
+        const subscription = subscribeStream(
+            Streams.Inventory,
+            (_nextExpectedStreamVersion, events: InventoryUpdatedEvent[]) =>
+                setInventory((prevState) =>
+                    inventoriesStateView(prevState, events, { productId: props.productId }),
+                ),
+        );
+        return () => unsubscribeStream(Streams.Inventory, subscription);
     }, []);
 
-    return (
-        <div className="tag is-light is-info">
-            Available: {inventory}
-        </div>
-    )
+    return <div className="tag is-light is-info">Available: {inventory}</div>;
 }
